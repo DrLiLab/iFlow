@@ -1,0 +1,8 @@
+foundry/*
+!foundry/sky130
+log/*
+report/*
+result/*
+rtl/*
+!rtl/coyote_tc
+work/*
