@@ -1,1 +1,2 @@
 foundry filter=lfs diff=lfs merge=lfs -text
+rtl filter=lfs diff=lfs merge=lfs -text
