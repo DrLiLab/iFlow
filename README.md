@@ -7,6 +7,7 @@ cd iFlow
 ./build_iflow.sh      //运行脚本下载EDA工具
 ```
 完成后即可使用iFlow。
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p1.png)
 
 ## 二、iFlow目录结构
 ### 1、foundry/
