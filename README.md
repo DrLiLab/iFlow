@@ -21,8 +21,11 @@ cd iFlow
 存放design的rtl文件和sdc文件，按不同的design命名。
 ### 6、scripts/
 　		├─cfg　           //库文件配置、工具配置、flow配置脚本存放目录
+    
 　		├─common　　      //对文件操作的通用脚本存放目录
+    
 　		├─ run_flow.py    //整个flow的运行脚本
+    
 　		├─ $design       //对应design每一步的脚本存放目录
 ### 7、tools/
 存放各个工具的文件。
@@ -62,17 +65,29 @@ Klayout支持直接打开def文件，gds载入比较慢，可以直接用klayout
 
 ### 2、输出的结果
 每一步的结果将输出到“/iFlow/result”目录下，如图5所示。
+
 synth：RTL综合，生成综合后的网表文件；
+
 floorplan：布局规划，生成描述物理位置关系的def和更新网表文件；
+
 tapcell：插入physical cell，生成描述物理位置关系的def和更新网表文件；
+
 pdn：构建电源网络，生成描述物理位置关系的def和更新网表文件；
+
 gplace：放置标准单元，生成描述物理位置关系的def和更新网表文件；
+
 resize：优化标准单元的尺寸，生成描述物理位置关系的def和更新网表文件；
+
 dplace：优化标准单元的摆放，消除overflow，生成描述物理位置关系的def和更新网表文件；
+
 cts：构建时钟树，生成描述物理位置关系的def和更新网表文件；
+
 filler：插入filler cell，生成描述物理位置关系的def和更新网表文件；
+
 groute：为detail rout生成引导guide文件，生成描述物理位置关系的def和更新网表文件；
+
 droute：根据guide文件进行布线，生成描述物理位置关系的def和更新网表文件；
+
 layout：生成gds文件。
 
 图5：
@@ -144,11 +159,12 @@ run_flow.py -h
 run_flow.py -d soc_asic_top -s synth -f smic110 -t HD -c MAX -v 1.0
 ```
 生成的log、report和result也会以相应的参数命名，如：“soc_asic_top.synth.yosys_0.9.HD.MAX.1.0.log”。
-**·**当需要同时跑多步时，可以以逗号“，”分隔，如同时跑synth和floorplan时，可以输入命令：
+
+·当需要同时跑多步时，可以以逗号“，”分隔，如同时跑synth和floorplan时，可以输入命令：
 ```
 run_flow.py -d soc_asic_top -s synth,floorplan -f smic110 -t HD -c MAX -v 1.0
 ```
-**·**当需要指定使用工具openroad_0.9.0进行floorplan时（默认使用openroad_1.1.0），可以输入命令：
+·当需要指定使用工具openroad_0.9.0进行floorplan时（默认使用openroad_1.1.0），可以输入命令：
 ```
 run_flow.py -d soc_asic_top -s floorplan=openroad_0.9.0
 ```
