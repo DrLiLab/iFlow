@@ -42,8 +42,10 @@ run_flow.py -d soc_asic_top -s synth,floorplan,tapcell,pdn,gplace,resize,dplace,
 （这里的版本号为0.3）,进行soc_asic_top设计的全流程running，注意log中有无Error。运行结束后，会打开klayout并显示最终design的版图，如图1所示，滚动鼠标滑轮可以缩放版图，按住“鼠标中键”可以移动版图。在图2中对“Layers”选择hide/show可以隐藏和显示对应的layer层，层数较多时加载会比较慢，可以右键选择“hide all”全部隐藏后，再逐层打开查看。
 
 图1：
+
 ![image](https://github.com/ll574918628/iFlow-image/blob/master/p1.png)
 
-图2：              
+图2：   
+
 ![image](https://github.com/ll574918628/iFlow-image/blob/master/p2.png)
 
