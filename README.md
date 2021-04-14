@@ -177,6 +177,30 @@ run_flow.py -d soc_asic_top -s floorplan=openroad_0.9.0
 
 ![image](https://github.com/ll574918628/iFlow-image/blob/master/p15.png)
 
+### 2、设置环境变量和创建路径
+如图16所示，这里主要设置环境变量以及创建相应的工作路径、结果输出的的路径以及库文件所在路径。
 
+图16：
 
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p16.png)
 
+### 3、预处理文件
+如图17所示，由于yosys中的abc工具只能读一个.lib文件，因此在使用yosys要先执行mergeLib.pl脚本，将所有用到的.lib文件合并为一个.lib文件“merged.lib”。同样的，TritonRoute工具也只能读入一个.lef文件，需要将所用到的.lef文件合并为一个.lef文件“merged_spacing.lef”。
+
+图17：
+
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p17.png)
+
+### 4、逐步运行
+如图18所示，根据不同的“step”运行不同的工具以及脚本，Openroad中不包含detailroute和看版图的工具，detailroute使用TritonRoute工具，看版图使用klayout工具。
+
+图18：
+
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p18.png)
+
+### 5、后处理
+每一步跑完后更新变量“prestep_sel”和“pre_tool_name”，如图19所示。
+
+图19：
+
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p19.png)
