@@ -42,24 +42,41 @@ iFlow使用说明。
 run_flow.py -d soc_asic_top -s synth -p synth -f smic110 -t HD -c MAX
 ```
 **命令参数：**
+
 **-d (design)：**
+
 design name；
+
 **-s (step)：**
+
 flow可选step：synth、floorplan、tapcell、pdn、gplace、resize、dplace、cts、filler、groute、droute、layout；
+
 **-p (previous step)：**
+
 用于调用前一步的结果；
+
 **-f (foundry)：**
+
 工艺选择，可选：sky130；
+
 **-t (track)：**
+
 标准单元track选择，可选：sky130[HS HD]；
+
 **-c (corner)：**
+
 工艺角，可选：sky130 [TYP]；
+
 **-v (version)：**
+
 追加到log/result rpt的版本号；
+
 **-l ：**
+
 前一步的版本号。
 
-**step command：
+**step command：**
+
 synth：
 ```
 run_flow.py -d $design -s synth -f smic110 -t $track -c $corner 
