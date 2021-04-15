@@ -36,7 +36,80 @@ cd iFlow
 ### 10、README.md
 iFlow使用说明。
 
-## 三、Example
+## 三、iFlow command
+### Eg.
+```
+run_flow.py -d soc_asic_top -s synth -p synth -f smic110 -t HD -c MAX
+```
+**命令参数：**
+**-d (design)：**
+design name；
+**-s (step)：**
+flow可选step：synth、floorplan、tapcell、pdn、gplace、resize、dplace、cts、filler、groute、droute、layout；
+**-p (previous step)：**
+用于调用前一步的结果；
+**-f (foundry)：**
+工艺选择，可选：sky130；
+**-t (track)：**
+标准单元track选择，可选：sky130[HS HD]；
+**-c (corner)：**
+工艺角，可选：sky130 [TYP]；
+**-v (version)：**
+追加到log/result rpt的版本号；
+**-l ：**
+前一步的版本号。
+
+**step command：
+synth：
+```
+run_flow.py -d $design -s synth -f smic110 -t $track -c $corner 
+```
+floorplan：
+```
+run_flow.py -d $design -s floorplan -f smic110 -t $track -c $corner
+```
+tapcell：
+```
+run_flow.py -d $design -s tapcell -f smic110 -t $track -c $corner
+```
+pdn：
+```
+run_flow.py -d $design -s pdn -f smic110 -t $track -c $corner
+```
+gplace：
+```
+run_flow.py -d $design -s gplace -f smic110 -t $track -c $corner
+```
+resize：
+```
+run_flow.py -d $design -s resize -f smic110 -t $track -c $corner
+```
+dplace：
+```
+run_flow.py -d $design -s dplace -f smic110 -t $track -c $corner
+```
+cts：
+```
+run_flow.py -d $design -s cts -f smic110 -t $track -c $corner
+```
+filler：
+```
+run_flow.py -d $design -s filler -f smic110 -t $track -c $corner 
+```
+groute：
+```
+run_flow.py -d $design -s groute -f smic110 -t $track -c $corner
+```
+droute：
+```
+run_flow.py -d $design -s droute -f smic110 -t $track -c $corner
+```
+layout：
+```
+run_flow.py -d $design -s layout -f smic110 -t $track -c $corner
+```
+
+## 四、Example
 ### 1、使用iFlow跑soc_asic_top设计的全流程
 进入“/iFlow/scripts/”目录，输入命令：
 ```
@@ -114,7 +187,7 @@ layout：生成gds文件。
 
 ![image](https://github.com/ll574918628/iFlow-image/blob/master/p8.png)
 
-## 四、更换库、设计、工具
+## 五、更换库、设计、工具
 ### 1、数据的定义
 “/iFlow/scripts/cfg”目录下，“data_def.py”脚本定义了iFlow使用的三个主要数据：Foundry、Tools、Flow，如图9所示，定义了每一步使用的默认工具。
 
@@ -147,7 +220,7 @@ layout：生成gds文件。
 
 ![image](https://github.com/ll574918628/iFlow-image/blob/master/p13.png)
 
-## 五、Flow脚本说明
+## 六、Flow脚本说明
 主要说明“run_flow.py”这个脚本每一步大概作用，
 ### 1、参数的解析和验证
 开头部分为参数的解析和验证，如图14所示，这里定义了“run_flow.py”这个脚本运行时需要的参数，包括：“design、step、prestep、foundry、track、corner、version、preversion”。输入命令：
