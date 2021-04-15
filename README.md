@@ -39,7 +39,7 @@ iFlow使用说明。
 ## 三、iFlow command
 ### Eg.
 ```
-run_flow.py -d soc_asic_top -s synth -p synth -f smic110 -t HD -c MAX
+run_flow.py -d soc_asic_top -s synth -p synth -f sky130110 -t HS -c TYP
 ```
 **命令参数：**
 
@@ -80,51 +80,51 @@ flow可选step：synth、floorplan、tapcell、pdn、gplace、resize、dplace、
 
 synth：
 ```
-run_flow.py -d $design -s synth -f smic110 -t $track -c $corner 
+run_flow.py -d $design -s synth -f $foundry -t $track -c $corner 
 ```
 floorplan：
 ```
-run_flow.py -d $design -s floorplan -f smic110 -t $track -c $corner
+run_flow.py -d $design -s floorplan -f $foundry -t $track -c $corner
 ```
 tapcell：
 ```
-run_flow.py -d $design -s tapcell -f smic110 -t $track -c $corner
+run_flow.py -d $design -s tapcell -f $foundry -t $track -c $corner
 ```
 pdn：
 ```
-run_flow.py -d $design -s pdn -f smic110 -t $track -c $corner
+run_flow.py -d $design -s pdn -f $foundry -t $track -c $corner
 ```
 gplace：
 ```
-run_flow.py -d $design -s gplace -f smic110 -t $track -c $corner
+run_flow.py -d $design -s gplace -f $foundry -t $track -c $corner
 ```
 resize：
 ```
-run_flow.py -d $design -s resize -f smic110 -t $track -c $corner
+run_flow.py -d $design -s resize -f $foundry -t $track -c $corner
 ```
 dplace：
 ```
-run_flow.py -d $design -s dplace -f smic110 -t $track -c $corner
+run_flow.py -d $design -s dplace -f $foundry -t $track -c $corner
 ```
 cts：
 ```
-run_flow.py -d $design -s cts -f smic110 -t $track -c $corner
+run_flow.py -d $design -s cts -f $foundry -t $track -c $corner
 ```
 filler：
 ```
-run_flow.py -d $design -s filler -f smic110 -t $track -c $corner 
+run_flow.py -d $design -s filler -f $foundry -t $track -c $corner 
 ```
 groute：
 ```
-run_flow.py -d $design -s groute -f smic110 -t $track -c $corner
+run_flow.py -d $design -s groute -f $foundry -t $track -c $corner
 ```
 droute：
 ```
-run_flow.py -d $design -s droute -f smic110 -t $track -c $corner
+run_flow.py -d $design -s droute -f $foundry -t $track -c $corner
 ```
 layout：
 ```
-run_flow.py -d $design -s layout -f smic110 -t $track -c $corner
+run_flow.py -d $design -s layout -f $foundry -t $track -c $corner
 ```
 
 ## 四、Example
