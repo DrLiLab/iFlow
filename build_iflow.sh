@@ -36,7 +36,7 @@ cd ../../../../
 git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
 cd tools/OpenROAD9295a533 
 git checkout 9295a533 
-git submodule update --init --recursive FastRoute OpenDB OpenRCX TritonMacroPlace eigen flute3 ioPlacer replace
+git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
 mkdir build && cd build 
 cmake .. && make
 cd ../../../
