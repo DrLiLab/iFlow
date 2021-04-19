@@ -37,6 +37,7 @@ git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD929
 cd tools/OpenROAD9295a533 
 git checkout 9295a533 
 git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
+git clone https://github.com/ZhishengZeng/PDNSim.git src/PDNSim
 mkdir build && cd build 
 cmake .. && make
 cd ../../../
