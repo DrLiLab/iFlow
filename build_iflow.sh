@@ -30,14 +30,16 @@ cd tools/TritonRoute758cdac
 git checkout 758cdac
 mkdir build && cd build 
 cmake .. && make
-cd ../../../../
+cd ../../../
 
 # OpenROAD
 git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
 cd tools/OpenROAD9295a533 
 git checkout 9295a533 
+cd src
 git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
-git clone https://github.com/ZhishengZeng/PDNSim.git src/PDNSim
+git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim
+cd ..
 mkdir build && cd build 
 cmake .. && make
 cd ../../../
