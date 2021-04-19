@@ -32,12 +32,11 @@ mkdir build && cd build
 cmake .. && make
 cd ../../../../
 
-exit 0
 # OpenROAD
 git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
 cd tools/OpenROAD9295a533 
 git checkout 9295a533 
-git submodule update --init --recursive
+git submodule update --init --recursive FastRoute OpenDB OpenRCX TritonMacroPlace eigen flute3 ioPlacer replace
 mkdir build && cd build 
 cmake .. && make
 cd ../../../
