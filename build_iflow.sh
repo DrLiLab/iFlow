@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
-echo $SHELL_FOLDER
+IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
+echo $IFLOW_ROOT
 
 exit(0)
 
@@ -18,33 +18,33 @@ wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz
 tar zxvf lemon-1.3.1.tar.gz
 cd lemon-1.3.1
 mkdir build && cd build && cmake .. && make && sudo make install
-cd ../../
+cd $IFLOW_ROOT
 sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 
 # yosys
 git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
-cd tools/yosys4be891e8
+cd $IFLOW_ROOT/tools/yosys4be891e8
 git checkout 4be891e8
 mkdir build && cd build
 make -f ../Makefile
-cd ../../
+cd $IFLOW_ROOT
 
 # TritonRoute
 git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
-cd tools/TritonRoute758cdac
+cd $IFLOW_ROOT/tools/TritonRoute758cdac
 git checkout 758cdac
 mkdir build && cd build 
 cmake .. && make
-cd ../../../
+cd $IFLOW_ROOT
 
 # OpenROAD
 git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
-cd tools/OpenROAD9295a533 
+cd $IFLOW_ROOT/tools/OpenROAD9295a533 
 git checkout 9295a533 
-cd src
+cd $IFLOW_ROOT/tools/OpenROAD9295a533/src
 git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
 git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim
-cd ..
+cd $IFLOW_ROOT/tools/OpenROAD9295a533
 mkdir build && cd build 
 cmake .. && make
-cd ../../../
+cd $IFLOW_ROOT
