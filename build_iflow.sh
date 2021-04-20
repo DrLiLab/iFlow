@@ -16,9 +16,9 @@ function CHECK_EXIST()
 {
     echo $*
     if [ -d $* ];then
-        return 1
+        return true
     else
-        return 0
+        return false
     fi
 }
 
@@ -57,7 +57,8 @@ RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 RUN git pull origin master
 
 # yosys
-if [ $(CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)=1 ];then
+if CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8
+then
     echo "[iFlow Warning] yosys4be891e8 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
@@ -69,7 +70,8 @@ else
 fi
 
 # TritonRoute
-if [ $(CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac)=1 ];then
+if CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac
+then
     echo "[iFlow Warning] TritonRoute758cdac is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
@@ -81,7 +83,8 @@ else
 fi
 
 # OpenROAD
-if [ $(CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)=1 ];then
+if CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533
+then
     echo "[iFlow Warning] OpenROAD9295a533 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
