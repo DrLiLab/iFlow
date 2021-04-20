@@ -6,6 +6,7 @@ IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 ######################################
 function CHECK_EXIST()
 {
+    echo $*
     if [ -d $* ];then
         return 1
     else
