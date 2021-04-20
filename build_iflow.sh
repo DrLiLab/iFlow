@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo " _ ______  _                 "
+echo "(_)|  ___|| |                "
+echo " _ | |_   | |  ___ __      __"
+echo "| ||  _|  | | / _ \\ \ /\ / /"
+echo "| || |    | || (_) |\ V  V / "
+echo "|_|\_|    |_| \___/  \_/\_/  "
+sleep 1
+
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
@@ -22,7 +30,7 @@ function RUN()
         if [ $? -eq 0 ]; then
             break;
         else
-            echo "[iFow Warning] exec command failed: '"$*"' retry..."
+            echo "[iFlow Warning] exec command failed: '"$*"' retry..."
             sleep 1
         fi
     done
@@ -50,7 +58,7 @@ RUN git pull origin master
 
 # yosys
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)=1 ];then
-    echo "[iFow Warning] yosys4be891e8 is exist! skipping..."
+    echo "[iFlow Warning] yosys4be891e8 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
     RUN cd $IFLOW_ROOT/tools/yosys4be891e8
@@ -62,7 +70,7 @@ fi
 
 # TritonRoute
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac)=1 ];then
-    echo "[iFow Warning] TritonRoute758cdac is exist! skipping..."
+    echo "[iFlow Warning] TritonRoute758cdac is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
     RUN cd $IFLOW_ROOT/tools/TritonRoute758cdac
@@ -74,7 +82,7 @@ fi
 
 # OpenROAD
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)=1 ];then
-    echo "[iFow Warning] OpenROAD9295a533 is exist! skipping..."
+    echo "[iFlow Warning] OpenROAD9295a533 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
     RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533 
