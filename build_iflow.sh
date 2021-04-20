@@ -4,6 +4,15 @@
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
 ######################################
+function CHECK_EXIST()
+{
+    if [ ! -f $* ];then
+        return 0
+    else
+        return 1
+    fi
+}
+
 function RUN()
 {
     while [ 0 -eq 0 ]
@@ -12,7 +21,7 @@ function RUN()
         if [ $? -eq 0 ]; then
             break;
         else
-            echo "EXEC COMMAND FAILED: '"$*"' retry..."
+            echo "[Warning] EXEC COMMAND FAILED: '"$*"' retry..."
             sleep 1
         fi
     done
@@ -39,29 +48,43 @@ RUN cd $IFLOW_ROOT
 RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 
 # yosys
-RUN git clone --force https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
-RUN cd $IFLOW_ROOT/tools/yosys4be891e8
-RUN git checkout 4be891e8
-RUN mkdir build && cd build
-RUN make -f ../Makefile
-RUN cd $IFLOW_ROOT
+if [ CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8 ];then
+    echo "[Warning] yosys4be891e8 is exist! skipping..."
+else
+    RUN git clone --force https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
+    RUN cd $IFLOW_ROOT/tools/yosys4be891e8
+    RUN git checkout 4be891e8
+    RUN mkdir build && cd build
+    RUN make -f ../Makefile
+    RUN cd $IFLOW_ROOT
+fi
 
 # TritonRoute
-RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
-RUN cd $IFLOW_ROOT/tools/TritonRoute758cdac
-RUN git checkout 758cdac
-RUN mkdir build && cd build 
-RUN cmake .. && make
-RUN cd $IFLOW_ROOT
+if [ CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac ];then
+    echo "[Warning] TritonRoute758cdac is exist! skipping..."
+else
+    RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
+    RUN cd $IFLOW_ROOT/tools/TritonRoute758cdac
+    RUN git checkout 758cdac
+    RUN mkdir build && cd build 
+    RUN cmake .. && make
+    RUN cd $IFLOW_ROOT
+fi
+
 
 # OpenROAD
-RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
-RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533 
-RUN git checkout 9295a533 
-RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533/src
-RUN git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
-RUN git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim
-RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533
-RUN mkdir build && cd build 
-RUN cmake .. && make
-RUN cd $IFLOW_ROOT
+if [ CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533 ];then
+    echo "[Warning] OpenROAD9295a533 is exist! skipping..."
+else
+    RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
+    RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533 
+    RUN git checkout 9295a533 
+    RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533/src
+    RUN git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
+    RUN git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim
+    RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533
+    RUN mkdir build && cd build 
+    RUN cmake .. && make
+    RUN cd $IFLOW_ROOT
+fi
+
