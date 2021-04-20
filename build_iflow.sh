@@ -15,9 +15,10 @@ IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 function CHECK_EXIST()
 {
     if [ -d $* ];then
-        return 1
-    else
+        # exist
         return 0
+    else
+        return 1
     fi
 }
 
