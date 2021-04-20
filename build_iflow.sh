@@ -72,7 +72,6 @@ else
     RUN cd $IFLOW_ROOT
 fi
 
-
 # OpenROAD
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)=1 ];then
     echo "[iFow Warning] OpenROAD9295a533 is exist! skipping..."
@@ -88,4 +87,3 @@ else
     RUN cmake .. && make
     RUN cd $IFLOW_ROOT
 fi
-
