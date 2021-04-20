@@ -1,11 +1,29 @@
 #!/bin/bash
 
+function RUN()
+{
+    while [ 0 -eq 0 ]
+    do
+        $* 
+        echo $*
+        if [ $? -eq 0 ]; then
+            break;
+        else
+            echo "...............warning , retry in 2 seconds .........."
+            sleep 2
+        fi
+    done
+}
+
+
+
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
 # essential package
-sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
+RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
 
+exit(0)
 # tcl
 sudo apt install tcl-dev -y
 sudo cp /usr/include/tcl8.6/*.h /usr/include/
