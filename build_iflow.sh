@@ -17,6 +17,9 @@ function RUN()
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
+# update iFlow
+RUN git pull origin master
+
 # essential package
 RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
 
