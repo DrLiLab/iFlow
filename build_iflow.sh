@@ -1,19 +1,5 @@
 #!/bin/bash
 
-function RUN()
-{
-    while [ 0 -eq 0 ]
-    do
-        $* 
-        if [ $? -eq 0 ]; then
-            break;
-        else
-            echo "EXEC COMMAND FAILED: '"$*"' retry..."
-            sleep 1
-        fi
-    done
-}
-
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
@@ -37,7 +23,7 @@ RUN cd $IFLOW_ROOT
 RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 
 # yosys
-RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
+RUN git clone --force https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
 RUN cd $IFLOW_ROOT/tools/yosys4be891e8
 RUN git checkout 4be891e8
 RUN mkdir build && cd build
@@ -63,3 +49,19 @@ RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533
 RUN mkdir build && cd build 
 RUN cmake .. && make
 RUN cd $IFLOW_ROOT
+
+######################################
+function RUN()
+{
+    while [ 0 -eq 0 ]
+    do
+        $* 
+        if [ $? -eq 0 ]; then
+            break;
+        else
+            echo "EXEC COMMAND FAILED: '"$*"' retry..."
+            sleep 1
+        fi
+    done
+}
+
