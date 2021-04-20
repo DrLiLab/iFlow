@@ -3,6 +3,22 @@
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
+######################################
+function RUN()
+{
+    while [ 0 -eq 0 ]
+    do
+        $* 
+        if [ $? -eq 0 ]; then
+            break;
+        else
+            echo "EXEC COMMAND FAILED: '"$*"' retry..."
+            sleep 1
+        fi
+    done
+}
+######################################
+
 # update iFlow
 RUN git pull origin master
 
@@ -49,19 +65,3 @@ RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533
 RUN mkdir build && cd build 
 RUN cmake .. && make
 RUN cd $IFLOW_ROOT
-
-######################################
-function RUN()
-{
-    while [ 0 -eq 0 ]
-    do
-        $* 
-        if [ $? -eq 0 ]; then
-            break;
-        else
-            echo "EXEC COMMAND FAILED: '"$*"' retry..."
-            sleep 1
-        fi
-    done
-}
-
