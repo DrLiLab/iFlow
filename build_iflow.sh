@@ -1,5 +1,10 @@
 #!/bin/bash
 
+SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
+echo $SHELL_FOLDER
+
+exit(0)
+
 # essential package
 sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
 
