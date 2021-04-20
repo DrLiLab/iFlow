@@ -6,7 +6,7 @@ echo " _ | |_   | |  ___ __      __"
 echo "| ||  _|  | | / _ \\ \ /\ / /"
 echo "| || |    | || (_) |\ V  V / "
 echo "|_||_|    |_| \___/  \_/\_/  "
-sleep 2
+sleep 1
 
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
