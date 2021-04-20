@@ -6,10 +6,10 @@ IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 ######################################
 function CHECK_EXIST()
 {
-    if [ ! -f $* ];then
-        return 0
-    else
+    if [ -d $* ];then
         return 1
+    else
+        return 0
     fi
 }
 
@@ -51,7 +51,7 @@ RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 if [ CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8 ];then
     echo "[Warning] yosys4be891e8 is exist! skipping..."
 else
-    RUN git clone --force https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
+    RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
     RUN cd $IFLOW_ROOT/tools/yosys4be891e8
     RUN git checkout 4be891e8
     RUN mkdir build && cd build
