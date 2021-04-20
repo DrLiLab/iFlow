@@ -29,9 +29,6 @@ function RUN()
 }
 ######################################
 
-# update iFlow
-RUN git pull origin master
-
 # essential package
 RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
 
@@ -47,6 +44,9 @@ RUN cd lemon-1.3.1
 RUN mkdir build && cd build && cmake .. && make && sudo make install
 RUN cd $IFLOW_ROOT
 RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
+
+# update iFlow
+RUN git pull origin master
 
 # yosys
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)=1 ];then
