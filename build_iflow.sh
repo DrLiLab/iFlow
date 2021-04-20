@@ -25,8 +25,8 @@ RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-de
 
 # tcl
 RUN sudo apt install tcl-dev -y
-RUN sudo cp /usr/include/tcl8.6/*.h /usr/include/
-RUN sudo ln -s /usr/lib/x86_64-linux-gnu/libtcl8.6.so /usr/lib/x86_64-linux-gnu/libtcl8.5.so
+RUN sudo cp -f /usr/include/tcl8.6/*.h /usr/include/
+RUN sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtcl8.6.so /usr/lib/x86_64-linux-gnu/libtcl8.5.so
 
 # lemon
 RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz 
