@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
