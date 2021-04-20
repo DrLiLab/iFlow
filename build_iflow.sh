@@ -1,9 +1,7 @@
 #!/bin/bash
 
+# env
 IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
-echo $IFLOW_ROOT
-
-exit(0)
 
 # essential package
 sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
