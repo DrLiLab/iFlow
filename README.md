@@ -39,7 +39,7 @@ iFlow使用说明。
 ## 三、iFlow command
 ### Eg.
 ```
-run_flow.py -d soc_asic_top -s synth -p synth -f sky130110 -t HS -c TYP
+run_flow.py -d aes_cipher_top -s synth -f sky130 -t HS -c TYP
 ```
 **命令参数：**
 
@@ -131,28 +131,28 @@ run_flow.py -d $design -s layout -f $foundry -t $track -c $corner
 ### 1、使用iFlow跑soc_asic_top设计的全流程
 进入“/iFlow/scripts/”目录，输入命令：
 ```
-run_flow.py -d soc_asic_top -s synth,floorplan,tapcell,pdn,gplace,resize,dplace,cts,filler,groute,droute,layout -p synth -f smic110 -t HD -c MAX -v 0.3 -l 0.3
+./run_flow.py -d aes_cipher_top -s synth,floorplan,tapcell,pdn,gplace,resize,dplace,cts,filler,groute,droute,layout -f sky130 -t HS -c TYP -v 1.0 -l 1.0
 ```
-（这里的版本号为0.3）,进行soc_asic_top设计的全流程running，注意log中有无Error。运行结束后，会打开klayout并显示最终design的版图，如图1所示，滚动鼠标滑轮可以缩放版图，按住“鼠标中键”可以移动版图。在图2中对“Layers”选择hide/show可以隐藏和显示对应的layer层，层数较多时加载会比较慢，可以右键选择“hide all”全部隐藏后，再逐层打开查看。
+（这里的版本号为1.0）,进行aes_cipher_top设计的全流程running，注意log中有无Error。运行结束后，会打开klayout并显示最终design的版图，如图1所示，滚动鼠标滑轮可以缩放版图，按住“鼠标中键”可以移动版图。在图2中对“Layers”选择hide/show可以隐藏和显示对应的layer层，层数较多时加载会比较慢，可以右键选择“hide all”全部隐藏后，再逐层打开查看。
 
 图1：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p1.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p1-1.png)
 
 图2：   
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p2.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p2-1.png)
 
-Klayout支持直接打开def文件，gds载入比较慢，可以直接用klayout打开def文件。输入命令“klayout”打开klayout的GUI，在菜单“File/Import”的子菜单中找到导入功能，选择DEF/LEF导入def文件以及lef文件。如图3所示，在弹窗的“Import File”中选择detail route生成的def文件导入，在“With LEF files:”中添加design中用到的lef文件，在“/iFlow/foundry/smic110/lef/中可以找到”，添加完毕后点“OK”即可导入。产生的结果如图4所示，由于def中没有merge “std cell”和“marcro”的gds文件，因此只有metal层和via，看不到底层的NW、CT、GT等，“std cell”和“marcro”的内部结构是固定的，直接调用，一般我们只关心布线结果，所以这里看def的结果足矣。
+Klayout支持直接打开def文件，gds载入比较慢，可以直接用klayout打开def文件。输入命令“klayout”打开klayout的GUI，在菜单“File/Import”的子菜单中找到导入功能，选择DEF/LEF导入def文件以及lef文件。如图3所示，在弹窗的“Import File”中选择detail route生成的def文件导入，在“With LEF files:”中添加design中用到的lef文件，在“/iFlow/foundry/sky130/lef/中可以找到”，添加完毕后点“OK”即可导入。产生的结果如图4所示，由于def中没有merge “std cell”和“marcro”的gds文件，因此只有metal层和via，看不到底层的NW、CT、GT等，“std cell”和“marcro”的内部结构是固定的，直接调用，一般我们只关心布线结果，所以这里看def的结果足矣。
 
 图3：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p3.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p3-1.png)
 
 
 图4：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p4.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p4-1.png)
 
 ### 2、输出的结果
 每一步的结果将输出到“/iFlow/result”目录下，如图5所示。
@@ -183,27 +183,27 @@ layout：生成gds文件。
 
 图5：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p5.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p5-1.png)
 
 ### 3、输出的报告
-每一步输出的报告可以在“/iFlow/report/”目录下查看，例如，进入“/iFlow/report/soc_asic_top.floorplan.openroad_1.1.0.HD.MAX.0.3”目录下，查看floorplan生成的报告“init.rpt”，如图6所示，可以得到floorplan后的wns、tns以及utilization等参数。
+每一步输出的报告可以在“/iFlow/report/”目录下查看，例如，进入“/iFlow/report/aes_cipher_top.floorplan.openroad_1.1.0.HS.TYP.1.0”目录下，查看floorplan生成的报告“init.rpt”，如图6所示，可以得到floorplan后的wns、tns以及utilization等参数。
 
 图6：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p6.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p6-1.png)
 
 ### 4、查看某一步的结果
 为了验证某一步的结果是否满足我们的要求，可以对单步的结果进行检查。例如，我们可以查看detail place之后的结果。和前面提过的步骤一样，打开klayout，在“Import File”中导入dplace结果中的def文件，如图7所示。
 
 图7：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p7.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p7-1.png)
 
 点击“OK”后，可以先在“Layers”选择“hide all”，再双击打开“OUTLINE”层，即可看到detail place后的结果（这里金属层为电源网络，隐藏金属层可以方便我们查看detail place的结果），如图8所示。同样的方法可以查看其他步的结果。
 
 图8：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p8.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p8-1.png)
 
 ## 五、更换库、设计、工具
 ### 1、数据的定义
@@ -218,18 +218,18 @@ layout：生成gds文件。
 
 图10：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p10.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p10-1.png)
 
 图11：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p11.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p11-1.png)
 
 ### 3、更换设计RTL
-进入到“/iFlow/scripts/”目录下，创建相应design的脚本文件目录，将“soc_asic_top”文件夹中“synth.yosys_0.9.tcl”脚本拷贝到新的design目录下，修改“synth.yosys_0.9.tcl”脚本中的RTL配置即可，如图12所示，更换design的Verilog文件。
+进入到“/iFlow/scripts/”目录下，创建相应design的脚本文件目录，将“aes_cipher_top”文件夹中“synth.yosys_0.9.tcl”脚本拷贝到新的design目录下，修改“synth.yosys_0.9.tcl”脚本中的RTL配置即可，如图12所示，更换design的Verilog文件。
 
 图12：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p12.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p12-1.png)
 
 ### 4、更换工具
 在“/iFlow/scripts/cfg”目录下，“tools_cfg.py”脚本中配置了每一步可以使用的工具及其所在路径，如图13所示。当要更换工具或者更换新版本工具时，增加新的工具的定义即可。
@@ -245,19 +245,19 @@ layout：生成gds文件。
 ```
 run_flow.py -h
 ```
-可以得到可选参数的具体说明，如图15所示，当需要跑soc_asic_top的综合时，我们可以输入命令:
+可以得到可选参数的具体说明，如图15所示，当需要跑aes_cipher_top的综合时，我们可以输入命令:
 ```
-run_flow.py -d soc_asic_top -s synth -f smic110 -t HD -c MAX -v 1.0
+./run_flow.py -d aes_cipher_top -s synth -f sky130 -t HS -c TYP -v 1.0
 ```
-生成的log、report和result也会以相应的参数命名，如：“soc_asic_top.synth.yosys_0.9.HD.MAX.1.0.log”。
+生成的log、report和result也会以相应的参数命名，如：“aes_cipher_top.synth.yosys_0.9.HS.TYP.1.0.log”。
 
 ·当需要同时跑多步时，可以以逗号“，”分隔，如同时跑synth和floorplan时，可以输入命令：
 ```
-run_flow.py -d soc_asic_top -s synth,floorplan -f smic110 -t HD -c MAX -v 1.0
+./run_flow.py -d aes_cipher_top -s synth,floorplan -f sky130 -t HS -c TYP -v 1.0
 ```
 ·当需要指定使用工具openroad_0.9.0进行floorplan时（默认使用openroad_1.1.0），可以输入命令：
 ```
-run_flow.py -d soc_asic_top -s floorplan=openroad_0.9.0
+./run_flow.py -d aes_cipher_top -s floorplan=openroad_0.9.0
 ```
 
 图14：
@@ -266,7 +266,7 @@ run_flow.py -d soc_asic_top -s floorplan=openroad_0.9.0
 
 图15：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p15.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p15-1.png)
 
 ### 2、设置环境变量和创建路径
 如图16所示，这里主要设置环境变量以及创建相应的工作路径、结果输出的的路径以及库文件所在路径。
@@ -287,7 +287,7 @@ run_flow.py -d soc_asic_top -s floorplan=openroad_0.9.0
 
 图18：
 
-![image](https://github.com/ll574918628/iFlow-image/blob/master/p18.png)
+![image](https://github.com/ll574918628/iFlow-image/blob/master/p18-1.png)
 
 ### 5、后处理
 每一步跑完后更新变量“prestep_sel”和“pre_tool_name”，如图19所示。
