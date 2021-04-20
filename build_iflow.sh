@@ -49,7 +49,7 @@ RUN cd $IFLOW_ROOT
 RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 
 # yosys
-if [ CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8 ];then
+if [ $(CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)=1 ];then
     echo "[Warning] yosys4be891e8 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
@@ -61,7 +61,7 @@ else
 fi
 
 # TritonRoute
-if [ CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac ];then
+if [ $(CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac)=1 ];then
     echo "[Warning] TritonRoute758cdac is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
@@ -74,7 +74,7 @@ fi
 
 
 # OpenROAD
-if [ CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533 ];then
+if [ $(CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)=1 ];then
     echo "[Warning] OpenROAD9295a533 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
