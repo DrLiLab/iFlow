@@ -22,7 +22,7 @@ function RUN()
         if [ $? -eq 0 ]; then
             break;
         else
-            echo "[Warning] EXEC COMMAND FAILED: '"$*"' retry..."
+            echo "[iFow-Warning] exec command failed: '"$*"' retry..."
             sleep 1
         fi
     done
@@ -50,7 +50,7 @@ RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 
 # yosys
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)=1 ];then
-    echo "[Warning] yosys4be891e8 is exist! skipping..."
+    echo "[iFow-Warning] yosys4be891e8 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
     RUN cd $IFLOW_ROOT/tools/yosys4be891e8
@@ -62,7 +62,7 @@ fi
 
 # TritonRoute
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac)=1 ];then
-    echo "[Warning] TritonRoute758cdac is exist! skipping..."
+    echo "[iFow-Warning] TritonRoute758cdac is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
     RUN cd $IFLOW_ROOT/tools/TritonRoute758cdac
@@ -75,7 +75,7 @@ fi
 
 # OpenROAD
 if [ $(CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)=1 ];then
-    echo "[Warning] OpenROAD9295a533 is exist! skipping..."
+    echo "[iFow-Warning] OpenROAD9295a533 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
     RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533 
