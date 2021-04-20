@@ -20,7 +20,6 @@ IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 # essential package
 RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
 
-exit(0)
 # tcl
 RUN sudo apt install tcl-dev -y
 RUN sudo cp /usr/include/tcl8.6/*.h /usr/include/
