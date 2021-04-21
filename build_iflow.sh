@@ -45,7 +45,7 @@ RUN sudo cp -f /usr/include/tcl8.6/*.h /usr/include/
 RUN sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtcl8.6.so /usr/lib/x86_64-linux-gnu/libtcl8.5.so
 
 # lemon
-if [CHECK_EXIST /usr/local/include/lemon] || [CHECK_EXIST /usr/local/include/lemon]
+if (CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)
 then
     echo "[iFlow Warning] lemon is exist! skipping..."
 else
