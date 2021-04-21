@@ -13,7 +13,7 @@ IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 ######################################
 function CHECK_EXIST()
 {
-    if [ -d $* ];then
+    if [ -d $* ]; then
         # exist
         return 0
     else
@@ -45,8 +45,7 @@ RUN sudo cp -f /usr/include/tcl8.6/*.h /usr/include/
 RUN sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtcl8.6.so /usr/lib/x86_64-linux-gnu/libtcl8.5.so
 
 # lemon
-if (CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)
-then
+if (CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon); then
     echo "[iFlow Warning] lemon is exist! skipping..."
 else
     RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz 
@@ -60,8 +59,7 @@ fi
 RUN git pull origin master
 
 # yosys
-if (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)
-then
+if (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8); then
     echo "[iFlow Warning] yosys4be891e8 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
@@ -73,8 +71,7 @@ else
 fi
 
 # TritonRoute
-if (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac)
-then
+if (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac); then
     echo "[iFlow Warning] TritonRoute758cdac is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
@@ -86,8 +83,7 @@ else
 fi
 
 # OpenROAD
-if (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)
-then
+if (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533); then
     echo "[iFlow Warning] OpenROAD9295a533 is exist! skipping..."
 else
     RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533 
@@ -101,4 +97,9 @@ else
     RUN cmake .. && make
     RUN cd $IFLOW_ROOT
 fi
-echo " [iFlow Info] build success! "
+
+if ((CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8); then
+    echo "[iFlow Info] build success! "
+else
+    echo "[iFlow Info] build failed! "
+fi
