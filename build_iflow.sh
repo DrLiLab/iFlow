@@ -60,7 +60,7 @@ fi
 RUN git pull origin master
 
 # yosys
-if CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8
+if (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8)
 then
     echo "[iFlow Warning] yosys4be891e8 is exist! skipping..."
 else
@@ -73,7 +73,7 @@ else
 fi
 
 # TritonRoute
-if CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac
+if (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac)
 then
     echo "[iFlow Warning] TritonRoute758cdac is exist! skipping..."
 else
@@ -86,7 +86,7 @@ else
 fi
 
 # OpenROAD
-if CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533
+if (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533)
 then
     echo "[iFlow Warning] OpenROAD9295a533 is exist! skipping..."
 else
