@@ -60,7 +60,7 @@ fi
 # update iFlow
 RUN git pull origin master
 
-# yosys
+# yosys4be891e8
 if (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8); then
     echo "[iFlow Warning] yosys4be891e8 is exist! skipping..."
 else
@@ -72,7 +72,7 @@ else
     RUN cd $IFLOW_ROOT
 fi
 
-# TritonRoute
+# TritonRoute758cdac
 if (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac); then
     echo "[iFlow Warning] TritonRoute758cdac is exist! skipping..."
 else
@@ -84,7 +84,7 @@ else
     RUN cd $IFLOW_ROOT
 fi
 
-# OpenROAD
+# OpenROAD9295a533
 if (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533); then
     echo "[iFlow Warning] OpenROAD9295a533 is exist! skipping..."
 else
@@ -100,7 +100,20 @@ else
     RUN cd $IFLOW_ROOT
 fi
 
-if ((CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533); then
+# OpenROADae191807
+if (CHECK_EXIST $IFLOW_ROOT/tools/OpenROADae191807); then
+    echo "[iFlow Warning] OpenROADae191807 is exist! skipping..."
+else
+    RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROADae191807 
+    RUN cd $IFLOW_ROOT/tools/OpenROADae191807 
+    RUN git checkout ae191807  
+    RUN git submodule update --init --recursive
+    RUN mkdir build && cd build 
+    RUN cmake .. && make -j$THREAD_NUM
+    RUN cd $IFLOW_ROOT
+fi
+
+if ((CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROADae191807); then
     echo "[iFlow Info] build success! "
 else
     echo "[iFlow Info] build failed! "
