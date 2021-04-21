@@ -23,6 +23,7 @@ function CHECK_EXIST()
 
 function RUN()
 {
+    echo "[iFlow Info] exec command: $*"
     while [ 0 -eq 0 ]
     do
         $* 
