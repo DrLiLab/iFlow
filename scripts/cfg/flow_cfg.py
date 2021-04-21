@@ -19,4 +19,5 @@ coosa           = Flow('soc_asic_top','smic110','HD','MAX')
 design_b_top    = Flow('DESIGN_B_TOP','smic55','HD','MAX')
 design_b_crg    = Flow('design_b_crg','smic55','HD','MAX')
 coyote_tc       = Flow('coyote_tc','sky130','HS','TYP')
+aes             = Flow('aes_cipher_top','sky130','HS','TYP')
 

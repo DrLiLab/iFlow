@@ -27,12 +27,20 @@ tool3  = Tools(
         ('floorplan','tapcell','pdn','gplace','resize','dplace','cts','filler','groute'),   
         'openroad_0.9.0',
         '/Project/liubojun/iFlow/tools/OpenROAD_fixcts/src/openroad')
+tool3_1= Tools(
+        ('floorplan','tapcell','pdn','gplace','resize','dplace','cts','filler','groute'),   
+        'openroad_1',
+        '/Project/liubojun/OpenROAD-flow-git/OpenROAD-flow/tools/build/OpenROAD/src/openroad')
 tool4  = Tools(
-        ('droute'),   
+        ('droute',),   
         'TritonRoute_1.0',
         '/Project/liubojun/iFlow/tools/TritonRoute/TritonRoute')
-tool4  = Tools(
-        ('layout'),   
+tool5  = Tools(
+        ('droute',),   
+        'TritonRoute_1.1',
+        '/home/liubojun/TritonRoute')
+tool6  = Tools(
+        ('layout',),   
         'klayout_0.26.2',
         '/usr/bin/klayout')
 

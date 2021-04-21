@@ -88,7 +88,7 @@ library (sky130_io_dummy_tt) {
     index_1 ("10, 200");
     index_2 ("500, 30000");
   }
-  cell (sky130_fd_io__top_gpiov2) {
+  cell (sky130_ef_io__gpiov2_pad_wrapped) {
     area : 16000;
     dont_touch : true;
     dont_use : true;

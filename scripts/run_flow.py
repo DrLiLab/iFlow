@@ -67,7 +67,7 @@ for astep in args.step.split(',') :
         astep         = match_obj.group(1)
         cur_tool_name = match_obj.group(2)
         if Tools.tool_step_info(cur_tool_name,astep) :
-            cur_tool_path = Tools.get_path(cur_tool_name)
+            pass
         else :
             print('Error: '+astep+' cannot use '+cur_tool_name)
             print('The available tool for '+astep+' is '+','.join(Tools.get_tools_for_step(astep)))
@@ -156,36 +156,38 @@ for astep in args.step.split(',') :
 
     # step run
     if re.search('TritonRoute',Flow.get_tool(args.design)[astep]) :
-        os.system(Tools.get_path(Flow.get_tool(args.design)[astep])+
+        os.system(Tools.get_path(cur_tool_name)+
             ' -lef '+proj_path+'/foundry/'+foundry_sel+'/lef/merged_spacing.lef'+
             ' -def '+os.environ['IFLOW_PRE_RESULT_PATH']+'/'+args.design+'.def'+
             ' -guide '+os.environ['IFLOW_PRE_RESULT_PATH']+'/'+'route.guide'+
             ' -output '+os.environ['IFLOW_RESULT_PATH']+'/'+args.design+'.def'+
             ' -threads 8'+
-            ' -verbose 1')
+            ' -verbose 1'+' | tee -ia '+log_file)
     elif re.search('layout',Flow.get_tool(args.design)[astep]) :
         os.system(proj_path+'/scripts/common/klayoutInsertLef.py '+
             ' -i '+proj_path+'/foundry/'+foundry_sel+'/klayout.lyt'+
             ' -l "'+os.environ['IFLOW_LEF_FILES']+'"'+
             ' -o '+'./klayout.lyt')
-        os.system(Tools.get_path(Flow.get_tool(args.design)[astep])+' -zz'
+        os.system(Tools.get_path(cur_tool_name)+' -zz'
             ' -rd design_name='+args.design+
             ' -rd in_def='+os.environ['IFLOW_PRE_RESULT_PATH']+'/'+args.design+'.def'+
-            ' -rd in_gds='+os.environ['IFLOW_GDS_FILES']+
+            ' -rd in_gds="'+os.environ['IFLOW_GDS_FILES']+'"'
             ' -rd out_gds='+os.environ['IFLOW_RESULT_PATH']+'/'+args.design+'.gds'+
             ' -rd tech_file='+'./klayout.lyt'+
+            ' -rd config_file='+'"" '+
+            ' -rd seal_gds='+'"" '+
             ' -rm '+proj_path+'/scripts/common/def2gds.py'+' | tee -ia '+log_file)
-        os.system(Tools.get_path(Flow.get_tool(args.design)[astep])+
-            ' -rd design_name='+args.design+
-            ' -rd tech_file='+'./klayout.lyt '+
-            os.environ['IFLOW_RESULT_PATH']+'/'+args.design+'.gds &')
+        os.system(Tools.get_path(cur_tool_name)+' '+
+            ' -l '+proj_path+'/foundry/'+foundry_sel+'/klayout.lyp'+
+            ' '+os.environ['IFLOW_RESULT_PATH']+'/'+args.design+'.gds &')
         
     else :
-        os.system(Tools.get_path(Flow.get_tool(args.design)[astep])+' '+proj_path+'/scripts/'+
+        os.system(Tools.get_path(cur_tool_name)+' '+proj_path+'/scripts/'+
             args.design+'/'+astep+'.'+cur_tool_name+'.tcl'+' | tee -ia '+log_file)
         
 
     prestep_sel     = astep
     pre_tool_name   = cur_tool_name
+    args.preversion = args.version
 
 

@@ -14,7 +14,7 @@ if(@ARGV > 0) {
     my $remove_cell_flag = 0;
     my $remove_info_flag = 0;
     while (<$fh>) {
-        if($_ =~ /^[\t\s]*cell\s*\(\s*(\w+)/) {
+        if($_ =~ /^[\t\s]*cell\s*\(\s*("?\w+)/) {
             my $cell_name = $1;
             die "Error! new cell before finishing the previous one!\n" if($remove_cell_flag != 0);
             foreach $apatten (split /\s+/,$dontuse_list) {
