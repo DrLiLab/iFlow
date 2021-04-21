@@ -23,14 +23,14 @@ function CHECK_EXIST()
 
 function RUN()
 {
-    echo "[iFlow Info] exec command: $*"
+    echo "[iFlow Info] exec command: '$*'"
     while [ 0 -eq 0 ]
     do
         $* 
         if [ $? -eq 0 ]; then
             break;
         else
-            echo "[iFlow Warning] exec command failed: '"$*"' retry..."
+            echo "[iFlow Warning] exec command failed: '$*' retry..."
             sleep 1
         fi
     done
