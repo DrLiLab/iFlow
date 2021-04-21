@@ -1,6 +1,26 @@
 # User Guide of iFlow
 ## Prerequisites
 
+The script supports Ubuntu 20.04.It is not recommended to use the version below 20.04.
+
+### install dependencies
+
+Tools
+  * build-essential 12.8
+  * cmake 3.16.3
+  * clang 10.0
+  * bison 3.5.1
+  * flex 2.6.4
+  * swig 4.0
+  * klayout 0.26
+
+Library
+  * libeigen3-dev 3.3.7-2
+  * libboost-all-dev 1.71.0
+  * libffi-dev 3.3-4
+  * libreadline-dev 8.0-4
+  * lemon 1.3.1
+
 ## 一、Build iFlow
 首先进入到要存放iFlow的目录下，输入命令：
 ```
