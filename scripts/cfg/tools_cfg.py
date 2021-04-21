@@ -18,27 +18,23 @@ from   data_def import *
 tool1  = Tools(
         ('synth',),
         'yosys_0.9',
-        '/Project/liubojun/iFlow/tools/yosys/bin/yosys')
+        '../../../iFlow/tools/yosys4be891e8/build/yosys')
 tool2  = Tools(
         ('floorplan','tapcell','pdn','gplace','resize','dplace','cts','filler','groute'),   
         'openroad_1.1.0',
-        '/Project/liubojun/iFlow/tools/OpenROAD/src/openroad')
+        '../../../iFlow/tools/OpenROAD9295a533/build/src/openroad')
 tool3  = Tools(
         ('floorplan','tapcell','pdn','gplace','resize','dplace','cts','filler','groute'),   
         'openroad_0.9.0',
-        '/Project/liubojun/iFlow/tools/OpenROAD_fixcts/src/openroad')
-tool3_1= Tools(
-        ('floorplan','tapcell','pdn','gplace','resize','dplace','cts','filler','groute'),   
-        'openroad_1',
-        '/Project/liubojun/OpenROAD-flow-git/OpenROAD-flow/tools/build/OpenROAD/src/openroad')
+        '../../../iFlow/tools/OpenROAD_fixcts/src/openroad')
 tool4  = Tools(
         ('droute',),   
         'TritonRoute_1.0',
-        '/Project/liubojun/iFlow/tools/TritonRoute/TritonRoute')
+        '../../../iFlow/tools/TritonRoute758cdac/build/TritonRoute')
 tool5  = Tools(
         ('droute',),   
         'TritonRoute_1.1',
-        '/home/liubojun/TritonRoute')
+        '../../../iFlow/TritonRoute')
 tool6  = Tools(
         ('layout',),   
         'klayout_0.26.2',
