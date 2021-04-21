@@ -45,12 +45,16 @@ RUN sudo cp -f /usr/include/tcl8.6/*.h /usr/include/
 RUN sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtcl8.6.so /usr/lib/x86_64-linux-gnu/libtcl8.5.so
 
 # lemon
-RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz 
-RUN tar zxvf lemon-1.3.1.tar.gz
-RUN cd lemon-1.3.1
-RUN mkdir build && cd build && cmake .. && make && sudo make install
-RUN cd $IFLOW_ROOT
-RUN sudo rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
+if CHECK_EXIST /usr/local/share/lemon -a CHECK_EXIST /usr/local/include/lemon
+then
+    echo "[iFlow Warning] lemon is exist! skipping..."
+else
+    RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz 
+    RUN tar zxvf lemon-1.3.1.tar.gz
+    RUN cd lemon-1.3.1
+    RUN mkdir build && cd build && cmake .. && make && sudo make install
+    RUN cd $IFLOW_ROOT && rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
+fi
 
 # update iFlow
 RUN git pull origin master
