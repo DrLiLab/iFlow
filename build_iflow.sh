@@ -52,7 +52,7 @@ else
     RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz 
     RUN tar zxvf lemon-1.3.1.tar.gz
     RUN cd lemon-1.3.1
-    RUN mkdir build && cd build && cmake .. && make -j4 && sudo make install
+    RUN mkdir build && cd build && cmake .. && make -j64 && sudo make install
     RUN cd $IFLOW_ROOT && rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 fi
 
@@ -67,7 +67,7 @@ else
     RUN cd $IFLOW_ROOT/tools/yosys4be891e8
     RUN git checkout 4be891e8
     RUN mkdir build && cd build
-    RUN make -f ../Makefile -j4
+    RUN make -f ../Makefile -j64
     RUN cd $IFLOW_ROOT
 fi
 
@@ -79,7 +79,7 @@ else
     RUN cd $IFLOW_ROOT/tools/TritonRoute758cdac
     RUN git checkout 758cdac
     RUN mkdir build && cd build 
-    RUN cmake .. && make -j4
+    RUN cmake .. && make -j64
     RUN cd $IFLOW_ROOT
 fi
 
@@ -95,7 +95,7 @@ else
     RUN git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim
     RUN cd $IFLOW_ROOT/tools/OpenROAD9295a533
     RUN mkdir build && cd build 
-    RUN cmake .. && make -j4
+    RUN cmake .. && make -j64
     RUN cd $IFLOW_ROOT
 fi
 
