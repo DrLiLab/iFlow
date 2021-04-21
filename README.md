@@ -1,7 +1,7 @@
 # User Guide of iFlow
 ## Prerequisites
 
-The script supports Ubuntu 20.04.It is not recommended to use the version below 20.04.
+The script supports Ubuntu 20.04. It is not recommended to use the version below 20.04.
 
 ### install dependencies
 
