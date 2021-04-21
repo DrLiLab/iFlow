@@ -8,8 +8,8 @@ echo " |_|_|   |_|\___/ \_/\_/  "
 sleep 1
 
 # env
-IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 THREAD_NUM=$(cat /proc/cpuinfo| grep "processor"| wc -l)
+IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 
 ######################################
 function CHECK_EXIST()
