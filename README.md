@@ -26,7 +26,7 @@ Library
 ```
 git clone https://github.com/PCNL-EDA/iFlow.git    //构建iFlow目录结构
 cd iFlow
-./build_iflow.sh      //运行脚本下载EDA工具
+./build_iflow.sh                                   //运行脚本下载EDA工具
 ```
 完成后即可使用iFlow。
 
