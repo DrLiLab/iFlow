@@ -99,7 +99,7 @@ else
     RUN cd $IFLOW_ROOT
 fi
 
-if ((CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8); then
+if ((CHECK_EXIST /usr/local/include/lemon) || (CHECK_EXIST /usr/local/include/lemon)) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533); then
     echo "[iFlow Info] build success! "
 else
     echo "[iFlow Info] build failed! "
