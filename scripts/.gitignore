@@ -2,5 +2,5 @@
 !.gitignore
 !cfg
 !common
-!coyote_tc
+!aes_cipher_top
 !run_flow.py
