@@ -101,3 +101,4 @@ else
     RUN cmake .. && make
     RUN cd $IFLOW_ROOT
 fi
+echo " [iFlow Info] build success! "
