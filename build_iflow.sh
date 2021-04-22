@@ -24,7 +24,7 @@ function CHECK_EXIST()
 {
     if [ -d $* ]; then
         # exist
-        echo "[iFlow Warning] dir exist: '$*' skiping..."
+        echo "[iFlow Info] dir exist: '$*' skiping..."
         return 0
     else
         return 1
