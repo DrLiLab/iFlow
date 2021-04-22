@@ -56,14 +56,12 @@ RUN sudo cp -f /usr/include/tcl8.6/*.h /usr/include/
 RUN sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtcl8.6.so /usr/lib/x86_64-linux-gnu/libtcl8.5.so
 
 # lemon
-(CHECK_EXIST /usr/local/include/lemon) || \
-{
-    RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz 
-    RUN tar zxvf lemon-1.3.1.tar.gz
-    RUN cd lemon-1.3.1
-    RUN mkdir build && cd build && cmake .. && make -j$THREAD_NUM && sudo make install
-    RUN cd $IFLOW_ROOT && rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
-}
+CHECK_EXIST /usr/local/include/lemon ||\
+RUN wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz &&\
+RUN tar zxvf lemon-1.3.1.tar.gz &&\
+RUN cd lemon-1.3.1 &&\
+RUN mkdir build && cd build && cmake .. && make -j$THREAD_NUM && sudo make install &&\
+RUN cd $IFLOW_ROOT && rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 
 # update iFlow
 RUN git pull origin master
