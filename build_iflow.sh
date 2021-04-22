@@ -47,7 +47,7 @@ function RUN()
 ######################################
 
 # essential package
-RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev -y
+RUN sudo apt install build-essential clang libreadline6-dev bison flex libffi-dev cmake libboost-all-dev swig klayout libeigen3-dev libspdlog-dev -y
 
 # tcl
 RUN sudo apt install tcl-dev -y
