@@ -20,29 +20,17 @@ IFLOW_ROOT=$(cd "$(dirname "$0")";pwd)
 IFLOW_TOOLS=$(cd "$(dirname "$0")";pwd)/tools
 
 ######################################
-function CHECK_EXIST()
+function CHECK_EXIST_NOT_EMPTY()
 {
-    if [ -d $* ]; then
-        # exist
-        echo "[iFlow Info] dir exist: '$*' skiping..."
-        return 0
-    else
-        return 1
-    fi
+    ([ -d $* ] && ![ ls dirname|wc -l ]) && { echo "[iFlow Info] dir exist: '$*' skiping..." ;return 0 ; } || return 1
 }
 
 function RUN()
 {
     echo "[iFlow Info] exec command: '$*'"
-    while [ 0 -eq 0 ]
-    do
+    while [ 0 -eq 0 ]; do
         $* 
-        if [ $? -eq 0 ]; then
-            break;
-        else
-            echo "[iFlow Warning] exec command failed: '$*' retry..."
-            sleep 1
-        fi
+        [ $? -eq 0 ] && break || {echo "[iFlow Warning] exec command failed: '$*' retry..." ;sleep 1 }
     done
 }
 ######################################
