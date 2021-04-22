@@ -68,45 +68,45 @@ CHECK_EXIST /usr/local/include/lemon ||\
 RUN git pull origin master
 
 # yosys4be891e8
-(CHECK_EXIST $IFLOW_TOOLS/yosys4be891e8) || (RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8)
+CHECK_EXIST $IFLOW_TOOLS/yosys4be891e8 || RUN git clone https://github.com/The-OpenROAD-Project/yosys.git tools/yosys4be891e8
 RUN cd $IFLOW_TOOLS/yosys4be891e8
 RUN git checkout 4be891e8
-(CHECK_EXIST $IFLOW_TOOLS/yosys4be891e8/build) || (RUN mkdir build)
+CHECK_EXIST $IFLOW_TOOLS/yosys4be891e8/build || RUN mkdir build
 RUN cd build && make -f ../Makefile -j$THREAD_NUM
 RUN cd $IFLOW_ROOT
 
 # TritonRoute758cdac
-(CHECK_EXIST $IFLOW_TOOLS/TritonRoute758cdac) || (RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac)
+CHECK_EXIST $IFLOW_TOOLS/TritonRoute758cdac || RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
 RUN cd$IFLOW_TOOLS/TritonRoute758cdac
 RUN git checkout 758cdac
-(CHECK_EXIST $IFLOW_TOOLS/TritonRoute758cdac/build) || (RUN mkdir build)
+CHECK_EXIST $IFLOW_TOOLS/TritonRoute758cdac/build || RUN mkdir build
 RUN cd build 
 RUN cmake .. && make -j$THREAD_NUM
 RUN cd $IFLOW_ROOT
     
 # OpenROAD9295a533
-(CHECK_EXIST $IFLOW_TOOLS/OpenROAD9295a533) || (RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533)
+CHECK_EXIST $IFLOW_TOOLS/OpenROAD9295a533 || RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROAD9295a533
 RUN cd $IFLOW_TOOLS/OpenROAD9295a533 
 RUN git checkout 9295a533 
 RUN cd $IFLOW_TOOLS/OpenROAD9295a533/src
 RUN git submodule update --init --recursive OpenSTA OpenDB flute3 replace ioPlacer FastRoute eigen TritonMacroPlace OpenRCX
-(CHECK_EXIST $IFLOW_TOOLS/OpenROAD9295a533/src/PDNSim) || (RUN git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim)
+CHECK_EXIST $IFLOW_TOOLS/OpenROAD9295a533/src/PDNSim || RUN git clone https://github.com/ZhishengZeng/PDNSim.git PDNSim
 RUN cd $IFLOW_TOOLS/OpenROAD9295a533
-(CHECK_EXIST $IFLOW_TOOLS/OpenROAD9295a533/build) || (RUN mkdir build)
+CHECK_EXIST $IFLOW_TOOLS/OpenROAD9295a533/build || RUN mkdir build
 RUN cd build && cmake .. && make -j$THREAD_NUM
 RUN cd $IFLOW_ROOT
 
 # OpenROADae191807
-(CHECK_EXIST $IFLOW_TOOLS/OpenROADae191807) || (RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROADae191807)
+CHECK_EXIST $IFLOW_TOOLS/OpenROADae191807 || RUN git clone https://github.com/The-OpenROAD-Project/OpenROAD.git tools/OpenROADae191807
 RUN cd $IFLOW_TOOLS/OpenROADae191807 
 RUN git checkout ae191807  
 RUN git submodule update --init --recursive
-(CHECK_EXIST $IFLOW_TOOLS/OpenROADae191807/build) || (RUN mkdir build)
+CHECK_EXIST $IFLOW_TOOLS/OpenROADae191807/build || RUN mkdir build
 RUN cd build && cmake .. && make -j$THREAD_NUM
 RUN cd $IFLOW_ROOT
 
 if (CHECK_EXIST /usr/local/include/lemon) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROADae191807); then
-    echo "[iFlow Info] build success! "
+    echo "[iFlow Info] build successful! "
 else
     echo "[iFlow Info] build failed! "
 fi
