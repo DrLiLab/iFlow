@@ -77,7 +77,7 @@ RUN cd $IFLOW_ROOT
 
 # TritonRoute758cdac
 CHECK_EXIST $IFLOW_TOOLS/TritonRoute758cdac || RUN git clone https://github.com/The-OpenROAD-Project/TritonRoute.git tools/TritonRoute758cdac
-RUN cd$IFLOW_TOOLS/TritonRoute758cdac
+RUN cd $IFLOW_TOOLS/TritonRoute758cdac
 RUN git checkout 758cdac
 CHECK_EXIST $IFLOW_TOOLS/TritonRoute758cdac/build || RUN mkdir build
 RUN cd build 
