@@ -110,7 +110,7 @@ RUN cd $IFLOW_ROOT
 echo ""
 echo "************************************"
 echo "[iFlow Info] build checking... "
-if (CHECK_EXIST /usr/local/include/lemon) && (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROADae191807); then
+if (CHECK_EXIST $IFLOW_ROOT/tools/yosys4be891e8) && (CHECK_EXIST $IFLOW_ROOT/tools/TritonRoute758cdac) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROAD9295a533) && (CHECK_EXIST $IFLOW_ROOT/tools/OpenROADae191807); then
     echo "[iFlow Info] build successful! "
 else
     echo "[iFlow Info] build failed! "
