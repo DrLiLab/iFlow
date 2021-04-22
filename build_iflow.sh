@@ -15,17 +15,16 @@ echo " |_|_|   |_|\___/ \_/\_/  "
 sleep 1
 
 # env
-THREAD_NUM=$(cat /proc/cpuinfo| grep "processor" | wc -l)
+THREAD_NUM=$(cat /proc/cpuinfo | grep "processor" | wc -l)
 IFLOW_ROOT=$(cd "$(dirname "$0")" && pwd)
 IFLOW_TOOLS=$(cd "$(dirname "$0")" && pwd)/tools
 
 ######################################
 function CHECK_DIR()
 {
-    if [ -d $* ] && ![ RUN ls $* | wc -l ]; then
+    if [ -d $* ] && ![ ls $* | wc -l ]; then
         # exist
-        echo "[iFlow Info] dir exist: '$*' skiping..."
-        return 0
+        echo "[iFlow Info] dir exist: '$*' skiping..." && return 0
     else
         return 1
     fi
@@ -39,8 +38,7 @@ function RUN()
         if [ $? -eq 0 ]; then
             break;
         else
-            echo "[iFlow Warning] exec command failed: '$*' retry..."
-            sleep 1
+            echo "[iFlow Warning] exec command failed: '$*' retry..." && sleep 1
         fi
     done
 }
