@@ -25,8 +25,8 @@ tool2  = Tools(
         '../../../iFlow/tools/OpenROAD9295a533/build/src/openroad')
 tool3  = Tools(
         ('floorplan','tapcell','pdn','gplace','resize','dplace','cts','filler','groute'),   
-        'openroad_0.9.0',
-        '../../../iFlow/tools/OpenROAD_fixcts/src/openroad')
+        'openroad_1.2.0',
+        '../../../iFlow/tools/OpenROADae191807/build/src/openroad')
 tool4  = Tools(
         ('droute',),   
         'TritonRoute_1.0',
