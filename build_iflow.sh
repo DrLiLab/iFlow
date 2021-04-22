@@ -22,11 +22,10 @@ IFLOW_TOOLS=$(cd "$(dirname "$0")" && pwd)/tools
 ######################################
 function CHECK_DIR()
 {
-    if (-d $*) && !(ls $* | wc -l); then
-        # exist
-        echo "[iFlow Info] dir exist: '$*' skiping..." && return 0
-    else
+    if [ $( ls $* | wc -l ) -eq 0 ]; then
         return 1
+    else
+        echo "[iFlow Info] dir exist and not empty: '$*' skiping..." && return 0
     fi
 }
 
