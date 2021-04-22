@@ -19,6 +19,7 @@ Library
   * libboost-all-dev 1.71.0
   * libffi-dev 3.3-4
   * libreadline-dev 8.0-4
+  * libspdlog-dev 1.5.0
   * lemon 1.3.1
 
 ## 一、Build iFlow
