@@ -22,15 +22,26 @@ IFLOW_TOOLS=$(cd "$(dirname "$0")";pwd)/tools
 ######################################
 function CHECK_EXIST_NOT_EMPTY()
 {
-    { [ -d $* ] && ![ ls dirname|wc -l ] } && { echo "[iFlow Info] dir exist and not empty: '$*' skiping..." ;return 0 ;} || { rm -rf $* ;return 1 ;}
+    if [ -d $* ] && ![ ls $*|wc -l ]; then
+        # exist
+        echo "[iFlow Info] dir exist: '$*' skiping..."
+        return 0
+    else
+        return 1
+    fi
 }
 
 function RUN()
 {
-    echo "[iFlow Info] exec command: '$*'"
-    while [ 0 -eq 0 ]; do
+    while [ 0 -eq 0 ]
+    do
         $* 
-        { [ $? -eq 0 ] } && { break ;} || { echo "[iFlow Warning] exec command failed: '$*' retry..." ;sleep 1 ;}
+        if [ $? -eq 0 ]; then
+            break;
+        else
+            echo "[iFlow Warning] exec command failed: '$*' retry..."
+            sleep 1
+        fi
     done
 }
 ######################################
