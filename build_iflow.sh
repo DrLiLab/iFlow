@@ -64,7 +64,9 @@ CHECK_EXIST /usr/local/include/lemon ||\
     RUN mkdir build && cd build && cmake .. && make -j$THREAD_NUM && sudo make install
     RUN cd $IFLOW_ROOT && rm -rf lemon-1.3.1 lemon-1.3.1.tar.gz
 }
+
 # update iFlow
+RUN cd $IFLOW_ROOT
 RUN git pull origin master
 
 # yosys4be891e8
